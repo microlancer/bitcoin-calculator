@@ -1,0 +1,10 @@
+<?php
+
+return [
+  'baseUrl' => 'http://localhost/bitvest',
+  'dbUser' => 'bitvest',
+  'dbPass' => 'bitvest',
+  'dbName' => 'bitvest',
+  'dbHost' => '127.0.0.1',
+  'emailEnabled' => false,
+];

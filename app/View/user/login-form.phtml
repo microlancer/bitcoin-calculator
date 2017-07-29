@@ -1,0 +1,26 @@
+
+<form class="form-horizontal" method="post" action="<?=$vars['baseUrl']?>/user/login-submit">
+  <div class="control-group">
+    <label class="control-label" for="inputEmail">Email</label>
+    <div class="controls">
+      <input type="text" id="inputEmail" name="email" placeholder="Email" value="<?=$vars['formValues']['email']?>">
+      <div style='color:red'><?=$vars['formErrors']['email']?></div>
+    </div>
+  </div>
+  <div class="control-group">
+    <label class="control-label" for="inputPassword">Password</label>
+    <div class="controls">
+      <input type="password" id="inputPassword" name="password" placeholder="Password" value="">
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <!--<label class="checkbox">
+        <input type="checkbox"> Remember me
+      </label>-->
+      <button type="submit" class="btn btn-primary">Login</button> or <a href="<?=$vars['baseUrl']?>/user/signup">Signup for a new account</a>
+      <br>
+      <br><a href="<?=$vars['baseUrl']?>/user/forgot-password">Forgot password?</a>
+    </div>
+  </div>
+</form>

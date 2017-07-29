@@ -1,0 +1,10 @@
+<?php include(__DIR__ . '/../header.phtml'); ?>
+
+<h3 class="muted">User &raquo; Login</h3>
+
+<div class="alert alert-error">Email still needs verification. Please check your email inbox and spam box for the verification link.</div>
+
+<a href="<?=$vars['baseUrl']?>/user/resend-verification"><button class="btn btn-primary">Resend verification email</button></a>
+
+
+<?php include(__DIR__ . '/../footer.phtml'); ?>

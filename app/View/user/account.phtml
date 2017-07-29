@@ -1,0 +1,36 @@
+<?php include(__DIR__ . '/../header.phtml'); ?>
+
+<h3 class="muted">User &raquo; My account</h3>
+
+<?php if (isset($vars['message'])) { ?>
+<div class="alert alert-success"><?=$vars['message']?></div>
+<?php } ?>
+
+<p>
+    BTC Balance: 0.000000<br>
+BTC Deposit Address: ajf48f939fj03f93f934f304f03f4934fkffjiewf<br>
+</p>
+
+<p>
+    <i>*PSA: CoinShare is NOT a bank. Do not leave large deposits here for a lengthy period of time.
+        Only keep deposits necessary as payouts for jobs.</i>
+</p>
+
+<b>Transaction History</b><br>
+
+<p>
+<table>
+    <tr>
+        <td><?=date('c')?></td>
+        <td>Deposit</td>
+        <td>0.0001 BTC</td>
+    </tr>
+    <tr>
+        <td><?=date('c')?></td>
+        <td>Withdrawal</td>
+        <td>0.0001 BTC</td>
+    </tr>
+</table>
+</p>
+    
+<?php include(__DIR__ . '/../footer.phtml'); ?>
