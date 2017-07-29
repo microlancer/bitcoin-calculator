@@ -204,6 +204,8 @@ krsort($results);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <!-- Bootstrap -->
       <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+      <link href="bootstrap/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+
 </head>
 <body>
 <div class="container">
@@ -216,21 +218,21 @@ krsort($results);
 
 What if I saved 
 
-      $ <input class="form-control col-sm-2" style="width:70px" type='text' value='<?=$amount?>' size='6' name='amount'>
+      $ <input class="form-control" style="width:100px" type='text' value='<?=$amount?>' size='6' name='amount'>
 as bitcoin every 
-<select name='freq' style="width:90px">
+<select name='freq' class="form-control" style="width:90px">
 <?php foreach (Frequency::ALL as $freqOption) { ?>
 <option <?=($freq == $freqOption ? 'selected="true"' : '')?>"><?=$freqOption?></option>
 <?php } ?>
 </select> 
 starting on 
-<select name='month' style="width:100px">
+<select name='month' style="width:120px" class="form-control">
 <?php foreach ($months as $monthOption) { ?>
 <option <?=($month == $monthOption ? 'selected="true"' : '')?>"><?=$monthOption?></option>
 <?php } ?>
 </select> 
-<input name='day' type='text' size='4' value='<?=$day?>' style="width:30px"></input>, 
-<select name='year' style="width:70px">
+<input name='day' type='text' size='4' value='<?=$day?>' style="width:45px" class="form-control"></input>, 
+<select name='year' style="width:90px" class="form-control">
 <?php foreach ($years as $yearOption) { ?>
 <option <?=($year == $yearOption ? 'selected="true"' : '')?>"><?=$yearOption?></option>
 <?php } ?>
