@@ -3,7 +3,7 @@
 class DefaultInput
 {
   const MIN_AMOUNT = 0.01;
-  const AMOUNT = 20;
+  const AMOUNT = '20.00';
   const FREQUENCY = 'week';
   const MONTH = 'January';
   const DAY = 1;
@@ -207,7 +207,7 @@ krsort($results);
 </head>
 <body>
 <div class="container">
-<h1><img src="bitcoin.png" width='35' style='margin-bottom:5px'>&nbsp;Bitcoin Savings Calculator</h1>
+<h1><a href='/calculator' style=''><img src="bitcoin.png" width='35' style='margin-bottom:5px'></a> Bitcoin Savings Calculator</h1>
 
 
 <h3>Savings Plan</h3>
@@ -243,7 +243,7 @@ starting on
 <h3>Results</h3>
 
 <div class="alert alert-success lead" role="alert">
-I would have <b><?=sprintf("%.4f", $totalCoins);?></b> bitcoin (worth $<b><?=number_format($totalValue, 2);?></b>) today.
+I would have <b><?=number_format($totalCoins, 4);?></b> bitcoin worth <b>$<?=number_format($totalValue, 2);?></b> today.
 </div>
 
 <table class="table">
