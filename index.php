@@ -3,11 +3,11 @@
 class DefaultInput
 {
   const MIN_AMOUNT = 0.01;
-  const AMOUNT = 10;
+  const AMOUNT = 20;
   const FREQUENCY = 'week';
   const MONTH = 'January';
   const DAY = 1;
-  const YEAR = '2016';
+  const YEAR = '2011';
 }
 
 class Frequency
@@ -170,6 +170,7 @@ do {
     $price = $priceData['bpi'][$dateStd];
   } else {
     // use previous iteration price (assume unchanged)
+    $price = $priceData['bpi'][date("Y-m-d", strtotime(date("Y-m-d") . " -1 day"))];
   }
 
   //var_dump($price);
@@ -196,51 +197,57 @@ do {
 
 krsort($results);
 
-?><html>
+?><!DOCTYPE html>
+<html lang="en">
 <head>
-<title>
-Build a Bitcoin Nest Egg for your future!
-</title>
+  <title> Build a Bitcoin Nest Egg for your future!  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Bootstrap -->
+      <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
 </head>
 <body>
-<h1>Bitcoin Savings Calculator</h1>
+<div class="container">
+<h1><img src="bitcoin.png" width='35' style='margin-bottom:5px'>&nbsp;Bitcoin Savings Calculator</h1>
 
 
-<h2>Savings Plan</h2>
+<h3>Savings Plan</h3>
 
-<form method='get'>
+<form method='get' class="form-inline">
 
-<p>What if I saved 
-$<input type='text' value='<?=$amount?>' size='6' name='amount'></input> 
+What if I saved 
+
+      $ <input class="form-control col-sm-2" style="width:70px" type='text' value='<?=$amount?>' size='6' name='amount'>
 as bitcoin every 
-<select name='freq'>
+<select name='freq' style="width:90px">
 <?php foreach (Frequency::ALL as $freqOption) { ?>
 <option <?=($freq == $freqOption ? 'selected="true"' : '')?>"><?=$freqOption?></option>
 <?php } ?>
 </select> 
 starting on 
-<select name='month'>
+<select name='month' style="width:100px">
 <?php foreach ($months as $monthOption) { ?>
 <option <?=($month == $monthOption ? 'selected="true"' : '')?>"><?=$monthOption?></option>
 <?php } ?>
 </select> 
-<input name='day' type='text' size='4' value='<?=$day?>'></input>, 
-<select name='year'>
+<input name='day' type='text' size='4' value='<?=$day?>' style="width:30px"></input>, 
+<select name='year' style="width:70px">
 <?php foreach ($years as $yearOption) { ?>
 <option <?=($year == $yearOption ? 'selected="true"' : '')?>"><?=$yearOption?></option>
 <?php } ?>
 </select> 
 ?
 
-<input type='submit' value='Calculate'></p>
+<button type='submit' class='btn btn-primary' value='Calculate'>Calculate</button>
 </form>
 
-<h2>Results</h2>
+<h3>Results</h3>
 
-<p>I would have <b><?=sprintf("%.4f", $totalCoins);?></b> bitcoin (worth $<b><?=number_format($totalValue, 2);?></b>) today.</p>
+<div class="alert alert-success lead" role="alert">
+I would have <b><?=sprintf("%.4f", $totalCoins);?></b> bitcoin (worth $<b><?=number_format($totalValue, 2);?></b>) today.
+</div>
 
-<table border='1'>
-<tr><td>Date</td><td>Spent So Far</td><td>Amount of Bitcoin I Own</td><td>Value of My Savings</td></tr>
+<table class="table">
+<tr style='background-color:lightblue;font-weight:bold'><td>Date</td><td>Spent So Far</td><td>Amount of Bitcoin I Own</td><td>Value of My Savings</td></tr>
 <?php foreach ($results as $result) { ?>
 <tr>
   <td><?=$result['dateCasual']?></td>
@@ -251,6 +258,8 @@ starting on
 </table>
 
 <p><i>*Note: Does not include transaction fees. All calculations rounded. Price data from CoinDesk API.</i></p>
-
+</div>
+<script src="https://code.jquery.com/jquery.js"></script>
+ <script src="bootstrap/js/bootstrap.min.js"></script>
 </body>
 </html>
