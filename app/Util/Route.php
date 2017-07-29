@@ -49,7 +49,9 @@ class Route
 
             $fullyQualifiedControllerName = "App\Controller\\$controllerName";
             $controller = Di::getInstance()->get($fullyQualifiedControllerName);
-            call_user_func([$controller, $actionName], $unfilteredRequestParams);
+            $httpParams = Di::getInstance()->create("App\Util\HttpParams");
+            $httpParams->setParams($unfilteredRequestParams);
+            call_user_func([$controller, $actionName], $httpParams);
         } else {
             $this->headers->setResponseCode(404);
             echo '404 Not Found';
