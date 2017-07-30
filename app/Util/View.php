@@ -7,12 +7,12 @@ class View
 
     public function addVars(array $vars)
     {
-        $this->vars += $vars;
+        $this->vars = array_merge($this->vars, $vars);
     }
 
     public function render($view, $vars = [])
     {
-        $vars = $this->vars + $vars;
+        $vars = array_merge($this->vars, $vars);
         include __DIR__ . '/../View/' . $view . '.phtml';
     }
 }

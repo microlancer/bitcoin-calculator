@@ -22,7 +22,11 @@ class Calculator
         $amount = sprintf("%.2f", $params->get('amount', DefaultInput::AMOUNT));
 
         if ($amount < DefaultInput::MIN_AMOUNT) {
-            $amount = DefaultInput::AMOUNT;
+            $amount = DefaultInput::MIN_AMOUNT;
+        }
+        
+        if ($amount > DefaultInput::MAX_AMOUNT) {
+            $amount = DefaultInput::MAX_AMOUNT;
         }
 
         $freq = $params->get('freq', DefaultInput::FREQUENCY);
