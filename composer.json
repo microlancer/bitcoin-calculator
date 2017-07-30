@@ -1,0 +1,8 @@
+{
+    "require-dev": {
+        "phpunit/phpunit": "^5.7",
+        "friendsofphp/php-cs-fixer": "^2.1",
+        "phpdocumentor/phpdocumentor": "^2.9",
+        "humbug/humbug": "dev-master"
+    }
+}

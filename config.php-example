@@ -1,0 +1,5 @@
+<?php
+
+return [
+  'baseUrl' => 'http://localhost/bitcoin-calculator',
+];

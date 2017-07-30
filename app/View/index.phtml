@@ -1,0 +1,58 @@
+<?php include('header.phtml'); ?>
+
+<?php
+
+?>
+<h1><a href='/calculator' style=''><img src="<?=$vars['baseUrl']?>/images/bitcoin.png" width='35' style='margin-bottom:5px'></a> Bitcoin Savings Calculator</h1>
+
+
+<h3>Savings Plan</h3>
+
+<form method='get' class="form-inline">
+
+What if I saved 
+
+      $ <input class="form-control" style="width:100px" type='text' value='<?=$vars['amount']?>' size='6' name='amount'>
+as bitcoin every 
+<select name='freq' class="form-control" style="width:90px">
+<?php foreach ($vars['frequencies'] as $freqOption) { ?>
+<option <?=($vars['freq'] == $freqOption ? 'selected="true"' : '')?>"><?=$freqOption?></option>
+<?php } ?>
+</select> 
+starting on 
+<select name='month' style="width:120px" class="form-control">
+<?php foreach ($vars['months'] as $monthOption) { ?>
+<option <?=($vars['month'] == $monthOption ? 'selected="true"' : '')?>"><?=$monthOption?></option>
+<?php } ?>
+</select> 
+<input name='day' type='text' size='4' value='<?=$vars['day']?>' style="width:45px" class="form-control"></input>, 
+<select name='year' style="width:90px" class="form-control">
+<?php foreach ($vars['years'] as $yearOption) { ?>
+<option <?=($vars['year'] == $yearOption ? 'selected="true"' : '')?>"><?=$yearOption?></option>
+<?php } ?>
+</select> 
+?
+
+<button type='submit' class='btn btn-primary' value='Calculate'>Calculate</button>
+</form>
+
+<h3>Results</h3>
+
+<div class="alert alert-success lead" role="alert">
+I would have <b><?=number_format($vars['totalCoins'], 4);?></b> bitcoin worth <b>$<?=number_format($vars['totalValue'], 2);?></b> today.
+</div>
+
+<table class="table">
+<tr style='background-color:lightblue;font-weight:bold'><td>Date</td><td>Spent So Far</td><td>Amount of Bitcoin I Own</td><td>Value of My Savings</td></tr>
+<?php foreach ($vars['results'] as $result) { ?>
+<tr>
+  <td><?=$result['dateCasual']?></td>
+  <td>$<?=number_format($result['totalSpent'], 2);?></td>
+  <td><?=number_format($result['totalCoins'], 4);?></td>
+  <td>$<?=number_format($result['totalValue'], 2);?></td></tr>
+<?php } ?>
+</table>
+
+<p><i>*Note: Does not include transaction fees. All calculations rounded. Price data from CoinDesk API.</i></p>
+
+<?php include('footer.phtml'); ?>
