@@ -30,9 +30,6 @@ class IndexController extends ViewController
     {
         $this->view->addVars($params->toArray());
 
-        ini_set('error_reporting', E_ALL);
-        ini_set('display_errors', true);
-        
         $calcParams = $this->calculatorForm->getSanitizedInputs($params);
         $calcResults = $this->calculator->getResults($calcParams);
         
