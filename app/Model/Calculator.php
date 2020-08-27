@@ -53,9 +53,10 @@ class Calculator
 
             if (isset($priceData['bpi'][$dateStd])) {
                 $price = $priceData['bpi'][$dateStd];
+                $lastPrice = $price;
             } else {
                 // use previous iteration price (assume unchanged)
-                $price = $priceData['bpi'][date("Y-m-d", strtotime(date("Y-m-d") . " -1 day"))];
+                $price = $lastPrice;//$priceData['bpi'][date("Y-m-d", strtotime(date("Y-m-d") . " -1 day"))];
             }
 
             $coinsBought = sprintf("%.8f", $calcParams['amount'] / $price);
