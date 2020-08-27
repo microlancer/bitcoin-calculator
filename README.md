@@ -1,6 +1,14 @@
 # Bitcoin Calculator
 
-https://for-bitcoin.com/calculator
+https://calculator.for-bitcoin.com/
+
+## Installation
+
+* Point apache DocumentRoot to public/ folder.
+* Create config.php from config.php-example
+* Make data/ folder and contents writable by apache (chown -R www-data data/)
+
+## Contributing
 
 * Pull requests accepted! Please help me improve this calculator.
 
