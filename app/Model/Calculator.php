@@ -38,6 +38,7 @@ class Calculator
         $i = 0;
         $totalCoins = 0;
         $totalSpent = 0;
+        $lastPrice = 0;
         do {
 
             $newDate = strtotime(sprintf(
