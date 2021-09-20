@@ -8,12 +8,12 @@ use App\Model\Constants\Frequency;
 class Calculator
 {
     private $api;
-    
+
     public function __construct(Api $api)
     {
         $this->api = $api;
     }
-    
+
     public function getResults($calcParams)
     {
         $priceData = $this->api->getPriceData();
@@ -42,7 +42,14 @@ class Calculator
         do {
 
             $newDate = strtotime(sprintf(
-                            "%04d-%02d-%02d +%d days %+d weeks %+d months %+d years", $iterYear, $iterMonth, $iterDay, $i * $plusFreq[Frequency::DAY], $i * $plusFreq[Frequency::WEEK], $i * $plusFreq[Frequency::MONTH], $i * $plusFreq[Frequency::YEAR]
+                "%04d-%02d-%02d +%d days %+d weeks %+d months %+d years",
+                $iterYear,
+                $iterMonth,
+                $iterDay,
+                $i * $plusFreq[Frequency::DAY],
+                $i * $plusFreq[Frequency::WEEK],
+                $i * $plusFreq[Frequency::MONTH],
+                $i * $plusFreq[Frequency::YEAR]
             ));
 
             if ($newDate > time()) {
@@ -57,10 +64,14 @@ class Calculator
                 $lastPrice = $price;
             } else {
                 // use previous iteration price (assume unchanged)
-                $price = $lastPrice;//$priceData['bpi'][date("Y-m-d", strtotime(date("Y-m-d") . " -1 day"))];
+                $price = $lastPrice; //$priceData['bpi'][date("Y-m-d", strtotime(date("Y-m-d") . " -1 day"))];
             }
 
-            $coinsBought = sprintf("%.8f", $calcParams['amount'] / $price);
+            if ($price > 0) {
+                $coinsBought = sprintf("%.8f", $calcParams['amount'] / $price);
+            } else {
+                $coinsBought = 0;
+            }
 
             $totalCoins += $coinsBought;
 
